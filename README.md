@@ -101,8 +101,10 @@ In the context of system design, especially for a Google Software Development En
 
 ## Flow Chart / Mind Map
 
+Below is a flow chart representing the key concepts of concurrency control:
+
 ```mermaid
-graph TD;
+graph TD
     A[Concurrency Control in Distributed Systems]
     A --> B[Multithreading]
     A --> C[Multiprocessing]
