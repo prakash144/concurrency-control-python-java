@@ -1,7 +1,5 @@
 # Concurrency Control in Distributed Systems
 
-A brief description of your project.
-
 In the context of system design, especially for a Google Software Development Engineer (SDE) role, understanding concurrency control is crucial for designing scalable, reliable, and efficient systems.
 
 ### Multithreading
@@ -61,3 +59,60 @@ In the context of system design, especially for a Google Software Development En
       - **Cons**: **Single point of failure** if not handled properly.
 
 This section serves as a quick revision for key concurrency control concepts, real-life examples, and trade-offs. It is essential for system design interviews, particularly for roles like Google SDE, where a deep understanding of scalability and reliability challenges is required.
+
+---
+
+## Flow Chart / Mind Map
+
+Below is a flow chart representation of the content above:
+
+```mermaid
+graph TD;
+    A[Concurrency Control in Distributed Systems] --> B[Multithreading]
+    A --> C[Multiprocessing]
+    A --> D[Thread]
+    A --> E[Concurrency Control Techniques]
+
+    B --> F[Definition: Multiple threads in a process]
+    B --> G[System Design: Parallel tasks, e.g., Web Servers]
+    B --> H[Example: Web Browsers]
+    B --> I[Pros: Efficient CPU usage]
+    B --> J[Cons: Synchronization complexity]
+
+    C --> K[Definition: Multiple processes, separate memory]
+    C --> L[System Design: CPU-bound tasks]
+    C --> M[Example: Database Servers]
+    C --> N[Pros: Fault isolation]
+    C --> O[Cons: High memory usage]
+
+    D --> P[Definition: Smallest execution unit]
+    D --> Q[System Design: Simultaneous operations]
+    D --> R[Example: Chat Applications]
+    D --> S[Pros: Lightweight]
+    D --> T[Cons: Data corruption risk]
+
+    E --> U[Locks]
+    E --> V[Optimistic vs. Pessimistic Locking]
+    E --> W[Semaphores]
+    E --> X[Transactions (ACID)]
+    E --> Y[Distributed Consensus Algorithms]
+    E --> Z[Leader Election]
+
+    U --> AA[Pros: Data consistency]
+    U --> AB[Cons: Deadlocks]
+
+    V --> AC[Optimistic: High throughput, rollbacks]
+    V --> AD[Pessimistic: Prevents conflicts, contention]
+
+    W --> AE[Pros: Simple]
+    W --> AF[Cons: Deadlocks]
+
+    X --> AG[Pros: Consistency, integrity]
+    X --> AH[Cons: Resource-intensive]
+
+    Y --> AI[Examples: Paxos, Raft]
+    Y --> AJ[Pros: Consistency]
+    Y --> AK[Cons: Complexity]
+
+    Z --> AL[Pros: Simplifies decisions]
+    Z --> AM[Cons: Single point of failure]
