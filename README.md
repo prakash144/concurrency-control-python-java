@@ -1,6 +1,14 @@
 # Concurrency Control in Distributed Systems
 
 In the context of system design, especially for a Google Software Development Engineer (SDE) role, understanding concurrency control is crucial for designing scalable, reliable, and efficient systems.
+But first, I briefly explain threads, processes and the differences between parallelism and concurrency. 
+
+**Python:** Due to the global interpreter lock (GIL) Python multithreading only achieves concurrency and not parallelism.
+
+**Java:** Unlike Python, Java does not have a Global Interpreter Lock (GIL), so multiple threads can run in parallel on multi-core systems, fully utilizing the CPU's power.
+- In Java, multithreading can achieve both concurrency and parallelism.
+- **Concurrency:** Java threads can run concurrently, meaning they can manage multiple tasks at once by switching between them.
+- **Parallelism:** Java can achieve true parallelism if it runs threads on multiple CPU cores, allowing different tasks to execute simultaneously.
 
 ---
 
@@ -96,5 +104,26 @@ In the context of system design, especially for a Google Software Development En
 - **Definition**: Mechanisms for electing a leader in distributed systems to coordinate actions.
   - **Advantages**: Simplifies decision-making and conflict resolution.
   - **Disadvantages**: **Single point of failure** if not handled properly.
+
+---
+
+## Parallelism vs. Concurrency
+
+## Concurrency
+- Involves multiple tasks making progress within overlapping time frames.
+- Tasks may start, run, and complete in overlapping time periods but are not necessarily executed simultaneously.
+- Focuses on managing access to shared resources.
+- Typically achieved through task switching on a single core.
+
+## Parallelism
+- Involves executing multiple tasks simultaneously.
+- Tasks are executed at the same time on multiple cores or processors.
+- Focuses on increasing computational speed by dividing tasks into smaller sub-tasks.
+- Requires multiple processing units (e.g., multi-core processors).
+
+#### Key Points:
+- **Concurrency** focuses on task structure, while parallelism focuses on task execution.
+- **Concurrency** can lead to parallelism if multiple cores are available.
+- **Parallelism** without concurrency is possible in data-parallel operations where no task switching is needed.
 
 ---
