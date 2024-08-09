@@ -3,13 +3,6 @@
 In the context of system design, especially for a Google Software Development Engineer (SDE) role, understanding concurrency control is crucial for designing scalable, reliable, and efficient systems.
 But first, I briefly explain threads, processes and the differences between parallelism and concurrency. 
 
-**Python:** Due to the global interpreter lock (GIL) Python multithreading only achieves concurrency and not parallelism.
-
-**Java:** Unlike Python, Java does not have a Global Interpreter Lock (GIL), so multiple threads can run in parallel on multi-core systems, fully utilizing the CPU's power.
-- In Java, multithreading can achieve both concurrency and parallelism.
-- **Concurrency:** Java threads can run concurrently, meaning they can manage multiple tasks at once by switching between them.
-- **Parallelism:** Java can achieve true parallelism if it runs threads on multiple CPU cores, allowing different tasks to execute simultaneously.
-
 ---
 
 ## Multithreading
@@ -127,3 +120,28 @@ But first, I briefly explain threads, processes and the differences between para
 - **Parallelism** without concurrency is possible in data-parallel operations where no task switching is needed.
 
 ---
+
+### Multithreading and Multiprocessing
+
+
+**Python:** Due to the Global Interpreter Lock (GIL) in Python, multithreading only achieves concurrency, not parallelism.
+- **Multithreading:** The Global Interpreter Lock (GIL) prevents multiple threads from executing Python bytecode in parallel within a single process, so Python threads achieve concurrency (interleaving tasks) but not parallelism (true simultaneous execution on multiple cores).
+- **Multiprocessing:** By using separate processes instead of threads, Python can bypass the GIL. Each process has its own Python interpreter and memory space, allowing for true parallelism on multi-core processors.
+- **Note:** In contrast, Java does not have the GIL and can achieve both concurrency and parallelism through multithreading.
+
+  - **I/O-bound Tasks**: Python's multithreading is effective for I/O-bound tasks, such as reading from files or waiting for network responses. The Global Interpreter Lock (GIL) is released during I/O operations, allowing other threads to execute concurrently.
+  - **CPU-bound Tasks**: For CPU-bound tasks, where the program spends most of its time performing calculations, Python's multithreading does not provide performance benefits due to the GIL. In these cases, using the `multiprocessing` module is recommended, as it creates separate processes that can run on different CPU cores in parallel.
+
+
+
+**Java:** Unlike Python, Java does not have a Global Interpreter Lock (GIL), so multiple threads can run in parallel on multi-core systems, fully utilizing the CPU's power.
+- In Java, multithreading can achieve both concurrency and parallelism.
+- **Concurrency:** Java threads can run concurrently, meaning they can manage multiple tasks at once by switching between them.
+- **Parallelism:** Java can achieve true parallelism if it runs threads on multiple CPU cores, allowing different tasks to execute simultaneously.
+
+---
+
+### Resources:
+- [ Threading in Python ](https://youtu.be/WWdtGdNzQoo?list=PLijwb6y4zksTdgk7A2De1cHrwgNbuzNdT)
+- [ Achieve TRUE Parallelism in Python with Multiprocessing ](https://www.youtube.com/watch?v=kd7LcUjFNJo&list=PLijwb6y4zksTdgk7A2De1cHrwgNbuzNdT&index=4)
+
